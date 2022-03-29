@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using aspnet_dotnet_core_mvc.Models;
+using aspnet_dotnet_core_mvc.Services.Interfaces;
 
 namespace aspnet_dotnet_core_mvc.Controllers
 {
@@ -13,8 +14,9 @@ namespace aspnet_dotnet_core_mvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ILoginService _loginService)
         {
+            _loginService.CheckUserCredentials();
             _logger = logger;
         }
 
@@ -32,8 +34,6 @@ namespace aspnet_dotnet_core_mvc.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        
+        }        
     }
 }

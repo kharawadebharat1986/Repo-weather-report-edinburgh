@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using aspnet_dotnet_core_mvc.Services;
+using aspnet_dotnet_core_mvc.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,7 @@ namespace aspnet_dotnet_core_mvc
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<ILoginService,LoginService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

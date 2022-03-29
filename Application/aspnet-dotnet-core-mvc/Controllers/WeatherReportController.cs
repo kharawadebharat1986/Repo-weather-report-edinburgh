@@ -6,16 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet_dotnet_core_mvc.Controllers
 {
-    public class LoginController : Controller
+    public class WeatherReportController : Controller
     {
         public IActionResult Index()
         {
             return View();
-        }
-
-        public IActionResult LoginSubmit()
-        {
-            return RedirectToAction("Index", "WeatherReport");            
         }
     }
 }
