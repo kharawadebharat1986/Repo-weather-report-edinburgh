@@ -14,9 +14,8 @@ namespace aspnet_dotnet_core_mvc.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, ILoginService _loginService)
-        {
-            _loginService.CheckUserCredentials();
+        public HomeController(ILogger<HomeController> logger)
+        {  
             _logger = logger;
         }
 

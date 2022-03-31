@@ -1,8 +1,69 @@
-﻿
-@{
+﻿@model WeatherModel;
+@{    
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var weatherReport = (WeatherStackDataModel)ViewData["weatherReport"];
 }
 
 <h1>Weather Report Edinburgh</h1>
+<div class="container">
+    <div class="row">
+        <form class="modal-content animate" method="post">
+            <div class="col-md-12">
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => Model.City, htmlAttributes: new { placeholder = "Enter city to find weather", name = "uname" })
+                </div>
+                <div class="col-md-2">
+                    <button type="submit">Submit</button>
+                </div>
+                @if (weatherReport != null)
+                {
+                        <table>
+                            <tr>
+                                <td>
+                                    Temprature :
+                                </td>
+                                <td>
+                                    @weatherReport.current.temperature
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Observation Time :
+                                </td>
+                                <td>
+                                    @weatherReport.current.observation_time
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Temprature :
+                                </td>
+                                <td>
+                                    @weatherReport.current.temperature
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Wind Speed :
+                                </td>
+                                <td>
+                                    @weatherReport.current.wind_speed
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Humidity :
+                                </td>
+                                <td>
+                                    @weatherReport.current.humidity
+                                </td>
+                            </tr>
+                        </table>
+                    }
+            </div>           
+        </form>
+    </div>
+</div>
+
 
