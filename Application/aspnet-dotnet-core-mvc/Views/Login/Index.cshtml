@@ -1,12 +1,20 @@
-﻿<div id="id01">
+﻿@model LoginModel
+
+<div id="id01">
 
     <form class="modal-content animate" action="/Login/LoginSubmit" method="post">
         <div class="container">
             <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            @Html.TextBoxFor(m => Model.LoginName, htmlAttributes: new { placeholder = "Enter username", name = "uname" })
+            <label for="psw"><b>Password</b></label>            
+            @Html.PasswordFor(m => Model.Password, htmlAttributes: new { placeholder = "Enter Password", name = "psw" })
             <button type="submit">Login</button>
         </div>
+            @if ((string)TempData["LoginFailed"] != null)
+            { 
+                <div class="col-md-12" style="font-size:25px;color:red;">
+                    @((string)TempData["LoginFailed"])
+                </div>
+            }   
     </form>
 </div>

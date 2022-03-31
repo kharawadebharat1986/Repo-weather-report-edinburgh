@@ -12,18 +12,30 @@ namespace aspnet_dotnet_core_mvc.Services
 {
     public class WeatherReportService: IWeatherReportService
     {
+        private HttpClient _httpClient;
+
+        public WeatherReportService(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
         public async Task<WeatherStackDataModel> GetWeatherReport(string strCity)
-        {            
-            using (var httpClient = new HttpClient())
+        {
+            WeatherStackDataModel weatherStackData;
+            try
             {
-                WeatherStackDataModel weatherStackData;
-                using (var response = await httpClient.GetAsync("https://localhost:44356/weatherforecast"))
+                string url = string.Format("{0}?city={1}", "https://localhost:44356/weatherforecast", strCity);
+                using (var response = await _httpClient.GetAsync(url))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     weatherStackData = JsonConvert.DeserializeObject<WeatherStackDataModel>(apiResponse);
                 }
-                return weatherStackData;
-            }            
+            }
+            catch (Exception ex)
+            {
+                weatherStackData = new WeatherStackDataModel();
+                weatherStackData.Error = ex.Message;
+            }
+            return weatherStackData;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace aspnet_dotnet_core_mvc.Models
         public Request request { get; set; }
         public Location location { get; set; }
         public Current current { get; set; }
+        public string Error { get; set; }
     }
 
     public class Request

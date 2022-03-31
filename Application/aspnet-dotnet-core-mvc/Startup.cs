@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using aspnet_dotnet_core_mvc.Services;
 using aspnet_dotnet_core_mvc.Services.Interfaces;
@@ -26,7 +27,7 @@ namespace aspnet_dotnet_core_mvc
         {
             services.AddControllersWithViews();
             services.AddScoped<ILoginService,LoginService>();
-            services.AddScoped<IWeatherReportService, aspnet_dotnet_core_mvc.Services.WeatherReportService>();
+            services.AddHttpClient<IWeatherReportService, aspnet_dotnet_core_mvc.Services.WeatherReportService>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

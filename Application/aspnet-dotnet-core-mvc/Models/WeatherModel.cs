@@ -7,7 +7,6 @@ namespace aspnet_dotnet_core_mvc.Models
 {
     public class WeatherModel
     {
-        public string City { get; set; }
-        public int Temprature { get; set; }
+        public string City { get; set; }        
     }
 }

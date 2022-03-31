@@ -7,6 +7,8 @@ namespace aspnet_dotnet_core_mvc.Services.Interfaces
 {
     public interface ILoginService
     {
-        bool CheckUserCredentials(string userName, string password);
+        Task<bool> CheckUserCredentials(string userName, string password);
+        string EncryptPlainTextToEncryptedText(string password);
+        string DecryptEncriptedTextToPlainText(string decryptedPassword);
     }
 }
