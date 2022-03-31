@@ -23,7 +23,7 @@ namespace aspnet_dotnet_core_mvc.Services
             WeatherStackDataModel weatherStackData;
             try
             {
-                string url = string.Format("{0}?city={1}", "https://localhost:44356/weatherforecast", strCity);
+                string url = string.Format("{0}?strCity={1}", "https://api-weather-report-edinburgh.azurewebsites.net/weatherforecast", strCity);
                 using (var response = await _httpClient.GetAsync(url))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
